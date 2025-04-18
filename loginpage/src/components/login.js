@@ -1,49 +1,49 @@
 import React from 'react';
 import {
-  Grid,
-  Paper,
-  Avatar,
-  TextField,
-  Button,
-  Typography,
-  Link,
-  FormControlLabel,
-  Checkbox
+    Grid,
+    Paper,
+    Avatar,
+    TextField,
+    Button,
+    Typography,
+    Link,
+    FormControlLabel,
+    Checkbox
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import '../style/Style.css';
 
-const Login=()=>{
+const Login = ({handleChange}) => {
 
-    return(
+    const marginTop = { marginTop: 7 }
+    return (
         <Grid>
-            <Paper elevation={24} className='paperStyle'>
+            <Paper  className='paperStyle'>
                 <Grid align='center'>
-                     <Avatar className='avatarStyle'><LockOutlinedIcon/></Avatar>
-                    <h2>Sign In</h2>
+                    <Avatar className='avatarStyle'><LockOutlinedIcon /></Avatar>
+                    <h2 class='headerStyle'>Giriş Yap</h2>
                 </Grid>
-                <TextField label='Username' placeholder='Enter username' fullWidth required/>
-                <br/>
-                <TextField label='Password' placeholder='Enter password' type='password' fullWidth required/>
+                <TextField style={marginTop} label='Kullanıcı Adı' placeholder='Kullanıcı adınızı girin' fullWidth required />
+                <TextField style={marginTop} label='Parola' placeholder='Parolanızı girin' type='password' fullWidth required />
                 <FormControlLabel
                     control={
-                    <Checkbox
-                        name="checkedB"
-                        color="primary"
-                    />
+                        <Checkbox
+                            name="checkedB"
+                            color="primary"
+                        />
                     }
-                    label="Remember me"
-                 />
-                <Button type='submit' color='primary' variant="contained" className='buttonStyle' fullWidth>Sign in</Button>
+                    label="Beni Hatırla"
+                />
+                <Button className='customButton'type='submit' variant="contained"  fullWidth> Giriş Yap </Button>
                 <Typography >
-                     <Link href="#" >
-                        Forgot password ?
-                </Link>
+                    <Link href="#"  >
+                        Parolanızı mı unuttunuz ?
+                    </Link>
                 </Typography>
-                <Typography > Do you have an account ?
-                     <Link href="#" >
-                        Sign Up 
-                </Link>
+                <Typography > Hesap Oluşturmak için 
+                    <Link href="#" margin={1} onClick={() => {handleChange("event" , 1)}} >
+                        tıklayınız
+                    </Link>
                 </Typography>
             </Paper>
         </Grid>
