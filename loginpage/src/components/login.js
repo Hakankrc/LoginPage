@@ -13,19 +13,20 @@ import {
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import '../style/Style.css';
 
-const Login = ({handleChange}) => {
+const Login = ({ handleChange }) => {
 
-    const marginTop = { marginTop: 7 }
+    const marginTop = { marginTop: 30 }
+    const marginButton = { marginBottom: 40}
     return (
         <Grid>
-            <Paper  className='paperStyle'>
+            <Paper className='paperStyle'>
                 <Grid align='center'>
                     <Avatar className='avatarStyle'><LockOutlinedIcon /></Avatar>
                     <h2 class='headerStyle'>Giriş Yap</h2>
                 </Grid>
                 <TextField style={marginTop} label='Kullanıcı Adı' placeholder='Kullanıcı adınızı girin' fullWidth required />
                 <TextField style={marginTop} label='Parola' placeholder='Parolanızı girin' type='password' fullWidth required />
-                <FormControlLabel
+                <FormControlLabel style={marginTop}
                     control={
                         <Checkbox
                             name="checkedB"
@@ -34,14 +35,14 @@ const Login = ({handleChange}) => {
                     }
                     label="Beni Hatırla"
                 />
-                <Button className='customButton'type='submit' variant="contained"  fullWidth> Giriş Yap </Button>
+                <Button className='customButton' type='submit' variant="contained" style={marginButton} fullWidth> Giriş Yap </Button>
                 <Typography >
                     <Link href="#"  >
                         Parolanızı mı unuttunuz ?
                     </Link>
                 </Typography>
-                <Typography > Hesap Oluşturmak için 
-                    <Link href="#" margin={1} onClick={() => {handleChange("event" , 1)}} >
+                <Typography > Hesap Oluşturmak için
+                    <Link href="#" margin={1} onClick={() => { handleChange("event", 1) }} >
                         tıklayınız
                     </Link>
                 </Typography>
