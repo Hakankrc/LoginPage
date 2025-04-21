@@ -47,8 +47,20 @@
     margin: 180px auto !important;
     height: 550px !important;
     margin-top: 500 auto !important;
+    opacity: 0.8 !important;
     
   }
+
+  .background {
+    background-image: url('../assets/deneme.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh !important; 
+    width: 100vw !important;
+    position: absolute; 
+    opacity: 0.8 !important;
+  }
+  
 
   
 

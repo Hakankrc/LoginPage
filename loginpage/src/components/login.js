@@ -22,7 +22,8 @@ const Login = ({ handleChange }) => {
             <Paper className='paperStyle'>
                 <Grid align='center'>
                     <Avatar className='avatarStyle'><LockOutlinedIcon /></Avatar>
-                    <h2 class='headerStyle'>Giriş Yap</h2>
+                    <Typography variant="h5" className="headerStyle">Giriş Yap</Typography>
+
                 </Grid>
                 <TextField style={marginTop} label='Kullanıcı Adı' placeholder='Kullanıcı adınızı girin' fullWidth required />
                 <TextField style={marginTop} label='Parola' placeholder='Parolanızı girin' type='password' fullWidth required />

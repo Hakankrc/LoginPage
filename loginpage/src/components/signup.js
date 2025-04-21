@@ -6,6 +6,7 @@ import {
   TextField, 
   Button, 
   FormControlLabel, 
+    Typography,
   Checkbox 
 } from '@mui/material';
 
@@ -23,7 +24,8 @@ const Signup = () => {
                     <Avatar className='avatarStyle'>
                         <AddCircleOutlineOutlinedIcon />
                     </Avatar>
-                    <h2 class='headerStyle'>Kayıt Ol</h2>
+                    <Typography variant="h5" className="headerStyle">Kayıt Ol</Typography>
+
                     
                 </Grid>
                 <form>

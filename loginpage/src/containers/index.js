@@ -8,6 +8,7 @@ import Login from '../components/login'
 import Signup from '../components/signup'
 import '../style/Style.css'
 
+
 const SignInOutContainer = () => {
 
   const [value, setValue] = useState(0)
@@ -30,7 +31,8 @@ const SignInOutContainer = () => {
       >
         {value === index && (
           <Box>
-            <Typography>{children}</Typography>
+            <Typography component="div">{children}</Typography>
+
           </Box>
         )}
       </div>
@@ -38,27 +40,31 @@ const SignInOutContainer = () => {
   }
 
   return (
-    <Paper elevation={24} className='rootingStyle' >
-      <Tabs
-        value={value}
-        indicatorColor="primary"
-        textColor="primary"
-        variant="fullWidth"
-        onChange={handleChange}
-        aria-label="disabled tabs example"
-      >
-        <Tab label="Giriş Yap" />
 
-        <Tab label="Hesap Oluştur" />
-      </Tabs>
-      <TabPanel value={value} index={0}>
-        <Login handleChange={handleChange} />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <Signup />
-      </TabPanel>
-    </Paper>
+    <Box
+      className='background'
+    >
+      <Paper elevation={24} className='rootingStyle' >
+        <Tabs
+          value={value}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="fullWidth"
+          onChange={handleChange}
+          aria-label="disabled tabs example"
+        >
+          <Tab label="Giriş Yap" />
 
+          <Tab label="Hesap Oluştur" />
+        </Tabs>
+        <TabPanel value={value} index={0}>
+          <Login handleChange={handleChange} />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Signup />
+        </TabPanel>
+      </Paper>
+    </Box>
   )
 }
 
