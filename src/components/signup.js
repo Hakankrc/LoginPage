@@ -16,20 +16,22 @@ import * as Yup from 'yup';
 
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import '../style/Style.css';
-
+import axios from 'axios';
 const Signup = () => {
+    
 
     const marginTop = { marginTop: 5}
     const marginButton = { marginTop: 5 }
     const initialValues = {
-        name: '',
+        username: '',
         email: '',
         password: '',
         confirmPassword: '',
         termsAndConditions: false
     }
+    
     const validationSchema = Yup.object().shape({
-        name: Yup.string().min(4, "çok kısa").required('Kullanıcı adı zorunludur'),
+        username: Yup.string().min(4, "çok kısa").required('Kullanıcı adı zorunludur'),
         email: Yup.string().email('Geçersiz e-posta adresi').required('E-posta adresi zorunludur'),
         password: Yup.string().min(6, 'Şifre en az 6 karakter olmalıdır').required('Şifre zorunludur'),
         confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Şifreler eşleşmiyor').required('Şifreyi onaylamak zorunludur'),
@@ -41,6 +43,7 @@ const Signup = () => {
     const onSubmit = (values, props) => {
         console.log(values);
         console.log(props);
+        handleSubmit(values);
         setTimeout(() => {
             props.setSubmitting(false);
             props.resetForm();
@@ -48,6 +51,19 @@ const Signup = () => {
         }, 2000);
 
     }
+    const handleSubmit = async (e) => {
+        const { username, email, password } = e;
+        // Formdan gelen veriler 
+        const newUser = { username, email, password };
+    
+        try {
+          // Veriyi backend'e gönder
+          const response = await axios.post('http://localhost:8080/register', newUser);
+          console.log(response.data.message); // Başarı mesajını al
+        } catch (error) {
+          console.log(error.response ? error.response.data.message : 'Bir hata oluştu.');
+        }
+      };
     return (
         <Grid>
             <Paper className='paperStyle' >
@@ -63,7 +79,7 @@ const Signup = () => {
                     {(props) => (
                         <Form>
 
-                            <Field as={TextField} style={marginTop} name='name' helperText={<ErrorMessage name='name' />} fullWidth label='Kullanıcı Adı' placeholder="Bir kullanıcı adı girin" required />
+                            <Field as={TextField} style={marginTop} name='username' helperText={<ErrorMessage name='username' />} fullWidth label='Kullanıcı Adı' placeholder="Bir kullanıcı adı girin" required />
                             <Field as={TextField} style={marginTop} name='email' helperText={<ErrorMessage name='email' />} fullWidth label='Mail Adresi' placeholder="Bir mail adresi girin" required
                             />
                             <Field as={TextField} style={marginTop} name='password' helperText={<ErrorMessage name='password' />} type='password' fullWidth label='Şifre' placeholder="Şifrenizi belirleyin" required />
